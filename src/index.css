@@ -48,3 +48,11 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.current-step{
+  font-weight: bold;
+}
+
+.square.winner-line{
+  color: red;
+}
