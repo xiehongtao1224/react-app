@@ -88,11 +88,8 @@ class Game extends React.Component {
 
         squares[i] = this.state.isX ? 'X' : 'O';
         current.position = i;
-        if(this.state.historyOrder === 'asc') {
-            this.state.history.push(current);
-        }else {
-            this.state.history.unshift(current);
-        }
+
+        this.state.history.push(current);
         this.setState({
             current,
             isX: !this.state.isX
@@ -100,15 +97,8 @@ class Game extends React.Component {
     }
 
     jumpTo(i) {
-        let history;
-        let current;
-        if(this.state.historyOrder === 'asc') {
-            history = this.state.history.slice(0, i+1);
-            current = JSON.parse(JSON.stringify(history[i]));
-        }else {
-            history = this.state.history.slice(i, this.state.history.length)
-            current = JSON.parse(JSON.stringify(history[0]))
-        }
+        let history = this.state.history.slice(0, i+1);
+        let current = JSON.parse(JSON.stringify(history[i]));
         this.setState({
             history,
             current,
@@ -117,10 +107,8 @@ class Game extends React.Component {
     }
 
     changeOrder(order) {
-        if(order === this.state.historyOrder) return;
-        let history = this.state.history.reverse();
+        if(order === this.historyOrder) return;
         this.setState({
-            history,
             historyOrder: order
         })
     }
@@ -129,25 +117,28 @@ class Game extends React.Component {
         const current = JSON.parse(JSON.stringify(this.state.current));
         const winnerMsg = calWinner(current.squares);
 
-        const steps = this.state.history.map((step, i) => {
-            const desc = i ? 
+        let steps = this.state.history.map((step, i) => {
+            const describle = i ? 
                 `Go to step ${i}` :
                 "Go to game start";
             const position = i ? `(${Math.ceil((step.position + 1) / 3)}, ${step.position % 3 + 1})` : '';
-            let currentStep = (this.state.historyOrder === 'asc' &&  i === this.state.history.length - 1) || (this.state.historyOrder === 'desc' &&  i === 0)
             
             return (
                 <li key={i}>
-                    <button 
-                        className={ currentStep ? 'current-step' : ''}
+                    <button
+                        className={ i === this.state.history.length - 1 ? 'current-step' : ''}
                         onClick={ () => this.jumpTo(i) }
                     >
-                        { desc }
+                        { describle }
                     </button>
                     <span>{ position }</span>
                 </li>
             );
         })
+
+        if(this.state.historyOrder === 'desc') {
+            steps.reverse();
+        }
 
         let status = '';
         if(winnerMsg) {
@@ -172,10 +163,10 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{ status }</div>
-                    {/* <div>
+                    <div>
                         <button onClick = { () => this.changeOrder('asc') }>升序</button>
                         <button onClick = { () => this.changeOrder('desc') }>降序</button>
-                    </div> */}
+                    </div>
                     <ol>{ steps }</ol>
                 </div>
             </div>
