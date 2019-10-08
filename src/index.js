@@ -25,13 +25,6 @@ function Square(props) {
 }
   
 class Board extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            squares: Array(9).fill(null),
-            isX: true
-        }
-    }
 
     renderSquare(val, i) {
         let winnerLine = this.props.winnerLine.includes(i);
@@ -120,7 +113,7 @@ class Game extends React.Component {
         let steps = this.state.history.map((step, i) => {
             const describle = i ? 
                 `Go to step ${i}` :
-                "Go to game start";
+                `Go to game start`;
             const position = i ? `(${Math.ceil((step.position + 1) / 3)}, ${step.position % 3 + 1})` : '';
             
             return (
@@ -167,7 +160,7 @@ class Game extends React.Component {
                         <button onClick = { () => this.changeOrder('asc') }>升序</button>
                         <button onClick = { () => this.changeOrder('desc') }>降序</button>
                     </div>
-                    <ol>{ steps }</ol>
+                    <ol reversed={ this.state.historyOrder === 'desc' ? true : false }>{ steps }</ol>
                 </div>
             </div>
         );
