@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+import { Temperature } from './temperature';
 
 // class Square extends React.Component {
 //     render() {
@@ -17,7 +18,7 @@ function Square(props) {
     return (
         <button
             className={ props.winnerLine ? 'winner-line square' : 'square' }
-            onClick={ props.onClick }
+            onClick={ (e) => { props.onClick(); console.log(e); e.preventDefault(); e.stopPropagetion(); } }
         >
             {props.value}
         </button>
@@ -36,6 +37,14 @@ class Board extends React.Component {
                 onClick={ () => { this.props.onClick(i) } }
             />
         );
+    }
+
+    componentDidMount() {
+        console.log('Board componentDidMount')
+    }
+
+    componentWillUnmount() {
+        console.log('Board componentWillUnmount')
     }
   
     render() {
@@ -193,6 +202,10 @@ function calWinner(squares) {
 // ========================================
   
 ReactDOM.render(
-    <Game />,
+    <div>
+        <h1>#字棋</h1>
+        <Game />
+        <Temperature />
+    </div>,
     document.getElementById('root')
 );
