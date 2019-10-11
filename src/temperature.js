@@ -22,6 +22,10 @@ class Temperature extends React.Component {
         })
     }
 
+    handleClick() {
+        console.log(this.state.scale);
+    }
+
     render() {
         const temperature = this.state.temperature;
         const scale = this.state.scale;
@@ -32,7 +36,9 @@ class Temperature extends React.Component {
                 <TemperatureInput 
                     scale="c"
                     temperature={ celsius }
-                    onTemperatureChange={ (e) => { this.TemperatureChange(e, 'c') } } />
+                    onTemperatureChange={ (e) => { this.TemperatureChange(e, 'c') } } >
+                    <button onClick={ () => this.handleClick() }>组合</button>
+                </TemperatureInput>
 
                 <TemperatureInput 
                     scale="f"
@@ -56,6 +62,7 @@ class TemperatureInput extends React.Component {
                     value={ temperature }
                     onChange={ (e) => { this.props.onTemperatureChange(e) } }
                 ></input>
+                { this.props.children }
             </fieldset>
         );
     }
