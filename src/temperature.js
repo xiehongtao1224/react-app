@@ -36,15 +36,18 @@ class Temperature extends React.Component {
                 <TemperatureInput 
                     scale="c"
                     temperature={ celsius }
-                    onTemperatureChange={ (e) => { this.TemperatureChange(e, 'c') } } >
-                    <button onClick={ () => this.handleClick() }>组合</button>
+                    onTemperatureChange={ (e) => { this.TemperatureChange(e, 'c') } }
+                    button={
+                        <button onClick={ () => this.handleClick() }>组合</button>
+                    } >
                 </TemperatureInput>
 
                 <TemperatureInput 
                     scale="f"
                     temperature={ fahrenheit }
-                    onTemperatureChange={ (e) => { this.TemperatureChange(e, 'f') } } />
-                
+                    onTemperatureChange={ (e) => { this.TemperatureChange(e, 'f') } } >
+                    <button onClick={ () => this.handleClick() }>组合</button>
+                </TemperatureInput>
                 <Boiling  celsius={ celsius } />
             </div>
         );
@@ -62,6 +65,7 @@ class TemperatureInput extends React.Component {
                     value={ temperature }
                     onChange={ (e) => { this.props.onTemperatureChange(e) } }
                 ></input>
+                { this.props.button }
                 { this.props.children }
             </fieldset>
         );

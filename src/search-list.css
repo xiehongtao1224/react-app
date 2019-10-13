@@ -1,0 +1,17 @@
+.search-list{
+    width: 250px;
+    padding: 10px;
+}
+.list-column{
+    display: inline-block;
+    width: 100px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+.product-list-header .list-column{
+    font-weight: bold;
+}
+.product-item-header{
+    line-height: 30px;
+    font-weight: bold;
+}
