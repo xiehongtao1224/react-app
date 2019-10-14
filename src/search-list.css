@@ -5,13 +5,19 @@
 .list-column{
     display: inline-block;
     width: 100px;
-    line-height: 30px;
+    line-height: 25px;
     vertical-align: middle;
+}
+.list-column.no-stocked{
+    color: red;
 }
 .product-list-header .list-column{
     font-weight: bold;
 }
 .product-item-header{
-    line-height: 30px;
+    line-height: 28px;
     font-weight: bold;
+}
+.hide{
+    display: none !important;
 }
