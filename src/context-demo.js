@@ -6,10 +6,9 @@ MyContext.displayName = 'MyContext';
 class ContextDemo extends React.Component {
     render() {
         return (
-            // <MyContext.Provider value="MyContext.Provider">
-            //     <DemoBox />
-            // </MyContext.Provider>
-            <DemoBox />
+            <MyContext.Provider value="ContextDemo.MyContext.Provider">
+                <DemoBox />
+            </MyContext.Provider>
         )
     }
 }
@@ -24,18 +23,24 @@ class DemoBox extends React.Component {
 
     render() {
         return(
-            <div className="demo-box">
-                {/* { this.context } */}
-            </div>
+            <MyContext.Provider value="DemoBox.MyContext.Provider">
+                <div className="demo-box">
+                    { this.context }
+                    <DemoItem />
+                </div>
+            </MyContext.Provider>
         )
     }
 }
-// DemoBox.contextType = MyContext;
 
-// function DemoItem() {
-//     return(
-//         <div className="demo-item">{ this.context }</div>
-//     )
-// }
+class DemoItem extends React.Component {
+
+    render() {
+        return(
+            <div className="demo-item">{ this.context }</div>
+        )
+    }
+}
+DemoItem.contextType = MyContext;
 
 export default ContextDemo;

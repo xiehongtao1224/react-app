@@ -17,7 +17,9 @@ ReactDOM.render(
         <h1>搜索列表</h1>
         <Suspense fallback={<div>Loading...</div>}>
             <SearchList />
-            <h1>ContextDemo</h1>
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+        <h1>ContextDemo</h1>
             <ContextDemo />
         </Suspense>
     </div>,
