@@ -33,7 +33,6 @@ class SearchList extends React.Component {
                 return regexp.test(item.name);
             })
             this.setState({
-                timer: null,
                 searchList
             })
         })
@@ -145,7 +144,7 @@ function ProductItem(props) {
     );
 }
 
-export { SearchList };
+export default SearchList;
 
 let mockData = [
     {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},

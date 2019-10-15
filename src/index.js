@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Game } from './game';
 import { Temperature } from './temperature';
-import { SearchList } from './search-list';
+const SearchList = lazy(() => import('./search-list'));
+const ContextDemo = lazy(() => import('./context-demo'));
 
 // ========================================
   
@@ -14,7 +15,11 @@ ReactDOM.render(
         <h1>温度计算器</h1>
         <Temperature />
         <h1>搜索列表</h1>
-        <SearchList />
+        <Suspense fallback={<div>Loading...</div>}>
+            <SearchList />
+            <h1>ContextDemo</h1>
+            <ContextDemo />
+        </Suspense>
     </div>,
     document.getElementById('root')
 );
