@@ -19,7 +19,7 @@ ReactDOM.render(
             <SearchList />
         </Suspense>
         <Suspense fallback={<div>Loading...</div>}>
-        <h1>ContextDemo</h1>
+            <h1>ContextDemo</h1>
             <ContextDemo />
         </Suspense>
     </div>,
