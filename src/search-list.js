@@ -27,9 +27,6 @@ class SearchList extends React.Component {
         this.state.debounce(() => {
             let regexp = new RegExp(this.state.searchText, 'i');
             let searchList = this.state.list.filter(item => {
-                console.log(regexp);
-                console.log(item.searchText);
-                console.log(regexp.test(item.searchText))
                 return regexp.test(item.name);
             })
             this.setState({

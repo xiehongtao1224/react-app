@@ -35,14 +35,6 @@ class Board extends React.Component {
             />
         );
     }
-
-    componentDidMount() {
-        console.log('Board componentDidMount')
-    }
-
-    componentWillUnmount() {
-        console.log('Board componentWillUnmount')
-    }
   
     render() {
 
@@ -78,6 +70,14 @@ class Game extends React.Component {
             isX: true,
             historyOrder: 'asc'
         }
+    }
+
+    componentDidMount() {
+        console.log('Game componentDidMount')
+    }
+
+    componentWillUnmount() {
+        console.log('Game componentWillUnmount')
     }
 
     handleClick(i) {
