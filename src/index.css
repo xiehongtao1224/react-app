@@ -1,0 +1,13 @@
+body {
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
+}
+.main-content{
+    display: flex;
+}
+.content-left{
+    width: 50%;
+}
+.content-right{
+    width: 50%;
+}

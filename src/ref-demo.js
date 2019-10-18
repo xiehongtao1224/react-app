@@ -3,20 +3,20 @@ import React from 'react';
 class RefDemo extends React.Component {
     constructor(props) {
         super(props)
-        this.inputRef1 = null;
-        this.inputRef2 = React.createRef();
-        this.inputRef3 = null;
+        this.divRef1 = null;
+        this.divRef2 = React.createRef();
+        this.divRef3 = null;
         this.buttonRef = React.createRef();
         this.componentRef = React.createRef();
     }
 
     buttonRefClick() {
         console.log(this.refs.refDiv);
+        console.log(this.divRef1);
+        console.log(this.divRef2);
+        console.log(this.divRef3);
         console.log(this.buttonRef);
         console.log(this.componentRef);
-        console.log(this.inputRef1);
-        console.log(this.inputRef2);
-        console.log(this.inputRef3);
     }
 
     render() {
@@ -25,11 +25,11 @@ class RefDemo extends React.Component {
                 {/* 直接通过字符串获取 */}
                 <div ref="refDiv">refs</div>
                 {/* 通过自定义函数获取 */}
-                <input ref={ (input) => {  this.inputRef1 = input } }></input>
+                <div ref={ (div) => {  this.divRef1 = div } }>通过自定义函数获取ref</div>
                 {/* 通过createRef函数获取 */}
-                <input ref={ this.inputRef2 }></input>
+                <div ref={ this.divRef2 }>通过createRef函数获取ref</div>
                 {/* 通过函数形式获取子节点ref */}
-                <InputRef inputRef={ el => {  this.inputRef3 = el } } ></InputRef>
+                <DivRef divRef={ el => {  this.divRef3 = el } } value="通过函数形式获取子节点ref" ></DivRef>
                 {/* 通过forwardRef获取字节点ref,一般与高阶组件配合 */}
                 <ButtonRef
                     ref={ this.buttonRef } 
@@ -48,9 +48,9 @@ class RefDemo extends React.Component {
     }
 }
 
-function InputRef(props) {
+function DivRef(props) {
     return(
-        <input ref={ props.inputRef }></input>
+        <div ref={ props.divRef }>{ props.value }</div>
     );
 }
 
