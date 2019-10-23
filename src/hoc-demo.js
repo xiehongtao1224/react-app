@@ -7,6 +7,7 @@ const DataSource = {
 
 function SubscriptionComponents(WrappedComponent, selectData) {
     return class extends React.Component{
+
         constructor(props) {
             super(props)
             this.state = {
@@ -14,15 +15,24 @@ function SubscriptionComponents(WrappedComponent, selectData) {
             }
         }
 
+        componentDidMount() {
+            console.log(this.props);
+        }
+
         render() {
+
             return(
-                <WrappedComponent data={this.state.data} {...this.props} ></WrappedComponent>
+                <WrappedComponent 
+                    data={this.state.data}
+                    { ...this.props }
+                ></WrappedComponent>
             );
         }
     }
 }
 
 class CommentList extends React.Component {
+
     render() {
         return(
             <div>{ this.props.data }</div>
@@ -31,11 +41,26 @@ class CommentList extends React.Component {
 }
 
 class BlogPost extends React.Component {
+    static getDerivedStateFromProps(nextProps, prevState) {
+        return {
+            list: Array(3).fill(nextProps.data)
+        };
+    }
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            value: 'getDerivedStateFromProps',
+            list: []
+        }
+    }
+
     render() {
         return(
             <React.Fragment>
-                { Array(3).fill(0).map(() => {
-                    return <div>{ this.props.data }</div>
+                <span>{ this.state.value }</span>
+                { this.state.list.map((item, i) => {
+                    return <div key={i}>{ item }</div>
                 }) }
             </React.Fragment>
         )
@@ -56,10 +81,11 @@ export default class extends React.Component{
         return(
             <React.Fragment>
                 <CommentListSubscription
-                    data="commentList"
+                    value="commentList"
                 ></CommentListSubscription>
                 <BlogPostSubscription
-                    data="blogPost"
+                    value="blogPost"
+                    data="passThroughProps"
                 ></BlogPostSubscription>
             </React.Fragment>
         )

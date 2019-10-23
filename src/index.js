@@ -6,7 +6,7 @@ import { Game } from './game';
 import { Temperature } from './temperature';
 import ErrorBoundary from './error-boundary';
 import RefDemo from './ref-demo';
-// import HocDemo from './hoc-demo';
+import HocDemo from './hoc-demo';
 
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
@@ -42,6 +42,8 @@ ReactDOM.render(
                     渲染一个空标签
                 </>
             </React.Fragment>
+            <h1>高阶组件</h1>
+            <HocDemo></HocDemo>
         </div>
     </div>,
     document.getElementById('root')
