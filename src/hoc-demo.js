@@ -6,7 +6,7 @@ const DataSource = {
 }
 
 function SubscriptionComponents(WrappedComponent, selectData) {
-    return class extends React.Component{
+    class SubscriptionComponents extends React.Component{
 
         constructor(props) {
             super(props)
@@ -20,16 +20,22 @@ function SubscriptionComponents(WrappedComponent, selectData) {
         }
 
         render() {
-
+            const { value, ...passThroughProps } = this.props;
             return(
                 <WrappedComponent 
                     data={this.state.data}
-                    { ...this.props }
+                    { ...passThroughProps }
                 ></WrappedComponent>
             );
         }
     }
+    SubscriptionComponents.displayName = `SubscriptionComponents(${getDisplayName(WrappedComponent)})`
+    return SubscriptionComponents;
 }
+
+function getDisplayName(component) {
+    return component.displayName || component.name || 'Component';
+  }
 
 class CommentList extends React.Component {
 
@@ -76,7 +82,7 @@ const BlogPostSubscription = SubscriptionComponents(
     (data, value) => data[value]
 )
 
-export default class extends React.Component{
+class HocDemo extends React.Component{
     render() {
         return(
             <React.Fragment>
@@ -85,9 +91,12 @@ export default class extends React.Component{
                 ></CommentListSubscription>
                 <BlogPostSubscription
                     value="blogPost"
-                    data="passThroughProps"
+                    pass="pass"
+                    through="through"
                 ></BlogPostSubscription>
             </React.Fragment>
         )
     }
 }
+
+export default HocDemo;

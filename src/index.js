@@ -31,7 +31,7 @@ ReactDOM.render(
                     <ContextDemo />
                 </Suspense>
             </ErrorBoundary>
-        </div>,
+        </div>
         <div className="content-right">
             <h1>RefDemo</h1>
             <RefDemo></RefDemo>
