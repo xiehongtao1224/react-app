@@ -33,10 +33,6 @@ function SubscriptionComponents(WrappedComponent, selectData) {
     return SubscriptionComponents;
 }
 
-function getDisplayName(component) {
-    return component.displayName || component.name || 'Component';
-  }
-
 class CommentList extends React.Component {
 
     render() {
@@ -73,6 +69,38 @@ class BlogPost extends React.Component {
     }
 }
 
+function ForwardRefComponents(WrappedComponent) {
+    class ForwardRefComponent extends React.Component{
+        componentDidMount() {
+            console.log(this.props);
+        }
+
+        render() {
+            const { forwardedRef, ...rest } = this.props;
+            return(
+                <WrappedComponent ref={forwardedRef} {...rest} ></WrappedComponent>
+            );
+        }
+    }
+
+    ForwardRefComponent.displayName = `ForwardRefComponents(${getDisplayName(WrappedComponent)})`;
+    return React.forwardRef((props, ref) => {
+        return <ForwardRefComponent forwardedRef={ref} {...props} ></ForwardRefComponent>
+    })
+}
+
+class HocRef extends React.Component{
+    render() {
+        return(
+            <div>高阶组件与forwarded结合</div>
+        );
+    }
+}
+
+function getDisplayName(component) {
+    return component.displayName || component.name || 'Component';
+}
+
 const CommentListSubscription = SubscriptionComponents(
     CommentList,
     (data, value) => data[value]
@@ -81,6 +109,9 @@ const BlogPostSubscription = SubscriptionComponents(
     BlogPost,
     (data, value) => data[value]
 )
+
+const ref = React.createRef();
+const HocRefComponent = ForwardRefComponents(HocRef);
 
 class HocDemo extends React.Component{
     render() {
@@ -94,6 +125,10 @@ class HocDemo extends React.Component{
                     pass="pass"
                     through="through"
                 ></BlogPostSubscription>
+                <HocRefComponent 
+                    value="HocRefComponent"
+                    ref={ref}
+                ></HocRefComponent>
             </React.Fragment>
         )
     }

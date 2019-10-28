@@ -7,6 +7,7 @@ import { Temperature } from './temperature';
 import ErrorBoundary from './error-boundary';
 import RefDemo from './ref-demo';
 import HocDemo from './hoc-demo';
+import PortalDemo from './portal-demo';
 
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
@@ -45,6 +46,7 @@ ReactDOM.render(
             <h1>高阶组件</h1>
             <HocDemo></HocDemo>
         </div>
+        <PortalDemo></PortalDemo>
     </div>,
     document.getElementById('root')
 );
