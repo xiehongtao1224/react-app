@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DataSource = {
     commentList: 'CommentList',
@@ -40,6 +41,17 @@ class CommentList extends React.Component {
             <div>{ this.props.data }</div>
         )
     }
+}
+
+// 类型检查
+CommentList.propTypes = {
+    obj: PropTypes.shape({
+        a: PropTypes.number,
+        b: PropTypes.string
+    }),
+    arr: PropTypes.arrayOf(function(arr, key, component, location, propFullName) {
+        console.log(arr[key]);
+    })
 }
 
 class BlogPost extends React.Component {
@@ -119,6 +131,8 @@ class HocDemo extends React.Component{
             <React.Fragment>
                 <CommentListSubscription
                     value="commentList"
+                    obj={{a:1, b:'1', c:1}}
+                    arr={[1,2,3]}
                 ></CommentListSubscription>
                 <BlogPostSubscription
                     value="blogPost"

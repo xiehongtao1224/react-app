@@ -38,7 +38,7 @@ class Temperature extends React.Component {
                     temperature={ celsius }
                     onTemperatureChange={ (e) => { this.TemperatureChange(e, 'c') } }
                     button={
-                        <button onClick={ () => this.handleClick() }>props.button</button>
+                        value => (<button onClick={ () => this.handleClick() }>{ value }</button>)
                     }
                 ></TemperatureInput>
 
@@ -62,11 +62,11 @@ class TemperatureInput extends React.Component {
         return (
             <fieldset>
                 <legend>{ constants[scale] }</legend>
-                <input 
+                <input
                     value={ temperature }
                     onChange={ (e) => { this.props.onTemperatureChange(e) } }
                 ></input>
-                { this.props.button }
+                { this.props.button && this.props.button('from TemperatureInput') }
                 { this.props.children }
             </fieldset>
         );

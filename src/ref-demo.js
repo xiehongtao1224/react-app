@@ -22,7 +22,7 @@ class RefDemo extends React.Component {
     render() {
         return(
             <div className="ref-demo">
-                {/* 直接通过字符串获取 */}
+                {/* 直接通过字符串获取, 已过时, 不再使用 */}
                 <div ref="refDiv">refs</div>
                 {/* 通过自定义函数获取 */}
                 <div ref={ (div) => {  this.divRef1 = div } }>通过自定义函数获取ref</div>
