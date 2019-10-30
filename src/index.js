@@ -8,6 +8,7 @@ import ErrorBoundary from './error-boundary';
 import RefDemo from './ref-demo';
 import HocDemo from './hoc-demo';
 import PortalDemo from './portal-demo';
+import LifeCycle from './life-cycle';
 
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
@@ -45,6 +46,8 @@ ReactDOM.render(
             </React.Fragment>
             <h1>高阶组件</h1>
             <HocDemo></HocDemo>
+            <h1>LifeCycle</h1>
+            <LifeCycle></LifeCycle>
         </div>
         <PortalDemo></PortalDemo>
     </div>,
