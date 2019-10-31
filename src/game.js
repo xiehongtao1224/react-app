@@ -15,7 +15,7 @@ function Square(props) {
     return (
         <button
             className={ props.winnerLine ? 'winner-line square' : 'square' }
-            onClick={ (e) => { props.onClick(); console.log(e); e.preventDefault(); e.stopPropagation(); } }
+            onClick={ (e) => { props.onClick(); e.preventDefault(); e.stopPropagation(); } }
         >
             {props.value}
         </button>

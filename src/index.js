@@ -10,6 +10,8 @@ import HocDemo from './hoc-demo';
 import PortalDemo from './portal-demo';
 import LifeCycle from './life-cycle';
 
+import './store';
+
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
 

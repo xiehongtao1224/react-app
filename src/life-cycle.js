@@ -2,20 +2,25 @@ import React from 'react';
 
 class TestUpdate extends React.Component {
 
+    
+    render() {
+        return(
+            <div>{ this.props.value }</div>
+        );
+    }
+
     componentDidMount() {
         console.log(this.props.children)
     }
 
     componentDidUpdate(prevProps, prevState) {
         if(this.props.id !== prevProps.id) {
-            console.log('props 发生改变');
+            console.log('没有渲染的props也会触发update');
         }
     }
 
-    render() {
-        return(
-            <div>{ this.props.updateObj.value }</div>
-        );
+    componentWillUnmount() {
+
     }
 }
 
@@ -25,9 +30,7 @@ class LifeCycle extends React.Component {
         super(props)
         this.state = {
             id: 1,
-            updateObj: {
-                value: 'before update'
-            }
+            value: 'before update'
         }
     }
 
@@ -35,7 +38,8 @@ class LifeCycle extends React.Component {
         setTimeout(() => {
             this.setState((state, props) => {
                 return{
-                    id: 2
+                    id: 2,
+                    value: 'after update'
                 }
             })
         }, 1000);
@@ -45,7 +49,7 @@ class LifeCycle extends React.Component {
         return(
             <TestUpdate
                 id={this.state.id}
-                updateObj={this.state.updateObj}
+                value={this.state.value}
             >
                 <div>children1</div>
                 <div>children2</div>
