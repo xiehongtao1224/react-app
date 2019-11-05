@@ -14,6 +14,9 @@ import { TodoList, todoApp } from './todo-list';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
+import RouterApp from './router'
+import HookDemo from './hook-demo'
+
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
 
@@ -24,7 +27,7 @@ let store = createStore(todoApp);
 
 ReactDOM.render(
     <div className="main-content">
-        <div className="content-left">
+        <div className="content-col">
             <ErrorBoundary>
                 <h1>#字棋</h1>
                 <Game />
@@ -40,7 +43,7 @@ ReactDOM.render(
                 </Suspense>
             </ErrorBoundary>
         </div>
-        <div className="content-right">
+        <div className="content-col">
             <h1>RefDemo</h1>
             <RefDemo></RefDemo>
             {/* React.Fragment能加key, <>不能加key */}
@@ -58,6 +61,12 @@ ReactDOM.render(
             <Provider store={store}>
                 <TodoList></TodoList>
             </Provider>
+            <h1>HookDemo</h1>
+            <HookDemo></HookDemo>
+        </div>
+        <div className="content-col">
+            <h1>RouterApp</h1>
+            <RouterApp></RouterApp>
         </div>
         <PortalDemo></PortalDemo>
     </div>,
