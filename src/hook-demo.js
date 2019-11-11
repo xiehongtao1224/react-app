@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+
+const MyContext = React.createContext('myContext');
 
 function HookDemo() {
     const [count, setCount] = useState(0);
@@ -18,12 +20,20 @@ function HookDemo() {
     }, [count]);
 
     return (
-        <div>
+        <MyContext.Provider value="Hook-useContext">
             <p>你点击了{count}次</p>
             <button onClick={() => setCount(count+1)}>
                 Click me
             </button>
-        </div>
+            <ContextBox />
+        </MyContext.Provider>
+    )
+}
+
+function ContextBox() {
+    let MyContextValue = useContext(MyContext);
+    return (
+        <div>{MyContextValue}</div>
     )
 }
 
