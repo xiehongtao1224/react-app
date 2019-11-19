@@ -9,10 +9,7 @@ import RefDemo from './ref-demo';
 import HocDemo from './hoc-demo';
 import PortalDemo from './portal-demo';
 import LifeCycle from './life-cycle';
-
-import { TodoList, todoApp } from './todo-list';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { TodoList } from './todo-list';
 
 import RouterApp from './router'
 import HookDemo from './hook-demo'
@@ -22,7 +19,6 @@ import LoginApp from './login'
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
 
-let store = createStore(todoApp);
 
 
 // ========================================
@@ -60,9 +56,7 @@ ReactDOM.render(
             <h1>LifeCycle</h1>
             <LifeCycle></LifeCycle>
             <h1>TodoList</h1>
-            <Provider store={store}>
-                <TodoList></TodoList>
-            </Provider>
+            <TodoList></TodoList>
             <h1>HookDemo</h1>
             <HookDemo></HookDemo>
         </div>

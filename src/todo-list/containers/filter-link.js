@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick() {
             dispatch(setVisibilityFilter(ownProps.filter))
+        },
+        onChange() {
+            console.log(1);
         }
     }
 }

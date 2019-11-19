@@ -2,17 +2,20 @@ import React from 'react'
 import Footer from './footer'
 import AddTodo from '../containers/add-todo'
 import VisibleTodoList from '../containers/visible-todo-list'
-import {
-    BrowserRouter as Router
-} from 'react-router-dom'
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import { todoApp } from '../reducers';
+
+let store = createStore(todoApp);
 
 const App = () => (
-    <Router>
+    <Provider store={store}>
         <AddTodo />
         <VisibleTodoList 
             value="额外的props"
         />
         <Footer />
-    </Router>
+    </Provider>
 )
 export { App }
