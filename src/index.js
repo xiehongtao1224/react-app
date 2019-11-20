@@ -16,10 +16,10 @@ import HookDemo from './hook-demo'
 
 import LoginApp from './login'
 
+import BookList from './redux-actions'
+
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
-
-
 
 // ========================================
 
@@ -65,6 +65,8 @@ ReactDOM.render(
             <RouterApp></RouterApp>
             {/* <h1>LoginApp</h1>
             <LoginApp></LoginApp> */}
+            <h1>ReduxActions</h1>
+            <BookList></BookList>
         </div>
         <PortalDemo></PortalDemo>
     </div>,
