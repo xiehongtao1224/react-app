@@ -14,9 +14,9 @@ import { TodoList } from './todo-list';
 import RouterApp from './router'
 import HookDemo from './hook-demo'
 
-import LoginApp from './login'
-
 import BookList from './redux-actions'
+
+import LoginApp from './login'
 
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
