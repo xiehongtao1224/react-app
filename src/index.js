@@ -21,8 +21,6 @@ import LoginApp from './login'
 const SearchList = lazy(() => import('./search-list'));
 const ContextDemo = lazy(() => import('./context-demo'));
 
-// ========================================
-
 ReactDOM.render(
     <div className="main-content">
         <div className="content-col">
@@ -63,8 +61,8 @@ ReactDOM.render(
         <div className="content-col">
             <h1>RouterApp</h1>
             <RouterApp></RouterApp>
-            {/* <h1>LoginApp</h1>
-            <LoginApp></LoginApp> */}
+            <h1>LoginApp</h1>
+            <LoginApp></LoginApp>
             <h1>ReduxActions</h1>
             <BookList></BookList>
         </div>

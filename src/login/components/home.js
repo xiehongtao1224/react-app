@@ -19,4 +19,6 @@ class Home extends React.Component{
     }
 }
 
-export default withRouter(connect()(Home))
+// export default withRouter(connect()(Home))
+// 通过withRouter可以将路由的信息挂在到props，通过route渲染的组件默认会带有路由信息
+export default connect()(Home)

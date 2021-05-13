@@ -49,8 +49,5 @@ const BookListWithReaucer = connect(
             list: state.bookList
         }
     },
-    {
-        addBookList: bookActions.addBookList,
-        deleteBookList: bookActions.deleteBookList
-    }
+    bookActions
 )(BookList)

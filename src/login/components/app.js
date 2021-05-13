@@ -11,7 +11,9 @@ import ValidateLogin from './validate-login'
 import Login from './login'
 import Home from './home'
 
-let store = createStore(loginReducers);
+let store = createStore(loginReducers, {
+    test: 123
+});
 
 export default class LoginApp extends React.Component{
     render() {

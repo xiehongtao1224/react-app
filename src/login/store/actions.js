@@ -1,6 +1,6 @@
-export function setLoginState(state) {
+export function setLoginState(data) {
     return {
         type: 'SET_LOGIN',
-        state
+        data
     }
 }

@@ -46,7 +46,7 @@ class CommentList extends React.Component {
 // 类型检查
 CommentList.propTypes = {
     obj: PropTypes.shape({
-        a: PropTypes.number,
+        a: PropTypes.number.isRequired,
         b: PropTypes.string
     }),
     arr: PropTypes.arrayOf(function(arr, key, component, location, propFullName) {

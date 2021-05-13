@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 
-function loginState(state = false, action) {
+function loginState(state = { login: false }, action) {
     switch(action.type) {
         case 'SET_LOGIN':
-            return action.state;
-        default: 
+            return {
+                login: action.data
+            };
+        default: // 在初始化store的时候会返回默认的state
             return state;
     }
 }

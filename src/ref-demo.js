@@ -54,11 +54,15 @@ function DivRef(props) {
     );
 }
 
-const ButtonRef = React.forwardRef((props, ref) => (
-    <button ref={ref} className="button-ref" onClick={ props.buttonRefClick }>
-        {props.children}
-    </button>
-));
+const ButtonRef = React.forwardRef(
+    function forwardRefName (props, ref) {
+        return (
+            <button ref={ref} className="button-ref" onClick={ props.buttonRefClick }>
+                {props.children}
+            </button>
+        );
+    }
+);
 
 
 class ComponentRef extends React.Component {

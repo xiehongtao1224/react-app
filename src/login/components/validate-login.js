@@ -14,7 +14,7 @@ class ValidateLogin extends React.Component{
 
         console.log(this.props)
         return(
-            this.props.loginState ?
+            this.props.loginState.login ?
             this.props.children :
             <Switch>
                 <Route path="/login" component={Login} ></Route>
